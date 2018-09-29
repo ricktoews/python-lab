@@ -1,11 +1,16 @@
 import pythag
 
-p = pythag.Pythag()
+def get_pythag():
+  p = pythag.Pythag()
+  corners = [1, 2]
+  result = []
 
-for i in range(1, 11, 2):
-  triples = p.calc_triples(i*i)
+  for i in corners:
+    triples = p.calc_triples(i)
 
-  print "Triples for %d:" % (i*i)
+    result.append({ "corner": i, "triples": triples })
 
-  for t in triples:
-    print t
+    #for t in triples:
+    #  result.append(t)
+
+  return result

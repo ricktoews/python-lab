@@ -21,7 +21,7 @@ class Pythag:
 
 
   def set_corner(self, n):
-    self.corner = n
+    self.corner = n*n
 
 
   def get_squares(self):
