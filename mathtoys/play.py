@@ -2,7 +2,7 @@ import pythag
 
 def get_pythag():
   p = pythag.Pythag()
-  corners = [9, 25]
+  corners = [1, 2, 9, 25]
   result = []
 
   for i in corners:
@@ -16,3 +16,5 @@ def get_pythag():
   return result
 
 print get_pythag()
+
+
