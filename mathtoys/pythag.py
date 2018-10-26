@@ -101,7 +101,7 @@ class Pythag:
     """
     squares = []
     side = math.sqrt(self.corner_side)
-    for i in range(1, 5):
+    for i in range(1, 50):
       side += 2
       squares.append(side*side)
     return squares
@@ -111,7 +111,7 @@ class Pythag:
     When the corner side is 2, b^2 == n^2 + 2an == 4 + 4a == 4(1+a).
     The even squares, then, are simply 4, 16, 36, 64, &c.
     """
-    squares = [4*x*x for x in range(1, 5)]
+    squares = [4*x*x for x in range(1, 50)]
     return squares
 
   def calc_a_b_c(self, sq):
@@ -133,6 +133,9 @@ class Pythag:
       b = int(math.sqrt(self.corner_side * self.corner_side + 2*(self.corner_side)*a))
 
     c = int(math.sqrt(a*a + b*b))
+    if self.corner_side > 1 and a % self.corner_side == 0:
+      a = b = c = 0
+
     return [a, b, c]
 
   def calc_triples(self, side = 1):
@@ -157,15 +160,21 @@ class Pythag:
       squares = self.get_even_squares()
     else:
       squares = self.get_odd_squares()
-    print "calc_triples corner {side}, squares {squares}".format(side=side, squares=squares)
+    #print "calc_triples corner {side}, squares {squares}".format(side=side, squares=squares)
+    stop = False;
     for sq in squares:
       [a, b, c] = self.calc_a_b_c(sq)
 
-      t = [a, b, c]
-      alts = self.find_alternatives(t)
-      t.sort()
-      #t.append(alts)
-      t_str = ', '.join(map(lambda x: str(x), t))
-      triple.append(t_str)
+      if a != b:
+        t = [a, b, c]
+        alts = self.find_alternatives(t)
+        t.sort()
+        #t.append(alts)
+        if not stop:
+          t_str = ', '.join(map(lambda x: str(x), t))
+          t_str = t_str + '; diff ' + str(b-a)
+          triple.append(t_str)
+
+        stop = b - a < 0
 
     return triple
