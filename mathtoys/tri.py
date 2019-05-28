@@ -1,16 +1,12 @@
-def math_decorator(fn):
-  def new_fn(*args, **kwargs):
-    output = []
-    output.append("Decoration before function.")
-    output.append(fn(*args, **kwargs))
-    output.append("Decoration after function.")
+import click
 
-    return output
+@click.command()
+@click.argument('nth')
+def nth_tri(nth):
+  """ Return the nth triangular number. """
+  n = int(nth)
+  _tri = n * (n+1) / 2
+  click.echo(_tri)
 
-  return new_fn
-
-
-@math_decorator
-def tri(n):
-  return n*(n+1)/2
-
+if __name__ == '__main__':
+  nth_tri()

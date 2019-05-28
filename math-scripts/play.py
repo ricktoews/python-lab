@@ -15,6 +15,6 @@ def get_pythag():
 
   return result
 
-print get_pythag()
+#print get_pythag()
 
 
