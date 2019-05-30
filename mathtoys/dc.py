@@ -17,7 +17,9 @@ API = {
 def dc(denom):
   data = getData('dc', denom)
   first = data[0]
-  click.echo(first['decimal'])
+  (fraction, decimal, length, repeating) = [first[k] for k in ('fraction', 'decimal', 'length', 'repeating')]
+
+  click.echo('Fraction: %s, Decimal: %s, Length: %s, Repeating: %s' % (fraction, decimal, length, repeating))
 
 
 if __name__ == '__main__':
