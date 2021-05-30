@@ -1,3 +1,5 @@
+#!/usr/local/bin/python
+from modules.tri import nth_triangular
 import click
 
 @click.command()
@@ -5,7 +7,7 @@ import click
 def nth_tri(nth):
   """ Return the nth triangular number. """
   n = int(nth)
-  _tri = n * (n+1) / 2
+  _tri = nth_triangular(nth)
   click.echo(_tri)
 
 if __name__ == '__main__':
