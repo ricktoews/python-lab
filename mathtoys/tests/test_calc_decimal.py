@@ -1,7 +1,7 @@
 import unittest
 
 import sys
-sys.path.insert(1, '../mathtoys')
+sys.path.insert(1, '..')
 from modules.calc_decimal import calc_decimal
 
 class TestCalcDecimal(unittest.TestCase):

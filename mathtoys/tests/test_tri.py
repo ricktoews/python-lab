@@ -1,7 +1,7 @@
 import unittest
 import sys
-
-from .context import sample
+sys.path.insert(1, '..')
+from modules.tri import nth_triangular
 
 class TestTri(unittest.TestCase):
 
